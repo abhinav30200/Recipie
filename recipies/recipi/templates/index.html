@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Your Recipe</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Background Styling */
+    body {
+      background: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Card Styling */
+    .card {
+      background: #fff;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      animation: fadeIn 0.7s ease-in-out;
+    }
+
+    /* Card Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Button Styling */
+    .btn-primary {
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      border: none;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+    }
+
+    /* Form Labels */
+    .form-label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Header Styling */
+    h1 {
+      font-weight: bold;
+      background: -webkit-linear-gradient(#ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    /* Input Styling */
+    .form-control {
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 5px rgba(255, 126, 95, 0.5);
+      border-color: #ff7e5f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-4">
+          <h1 class="text-center">Submit Your Recipe</h1>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Recipe Name -->
+            <div class="mb-3">
+              <label for="recipeName" class="form-label">Recipe Name</label>
+              <input name="name" type="text" class="form-control" id="recipeName" placeholder="Enter the name of your recipe" required>
+            </div>
+
+            <!-- Recipe Description -->
+            <div class="mb-3">
+              <label for="recipeDescription" class="form-label">Description</label>
+              <textarea name="description" class="form-control" id="recipeDescription" rows="4" placeholder="Write a brief description of your recipe" required></textarea>
+            </div>
+
+            <!-- Recipe Image -->
+            <div class="mb-3">
+              <label for="recipeImage" class="form-label">Upload Image</label>
+              <input name="image" type="file" class="form-control" id="recipeImage" accept="image/*" required>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Submit Recipe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
