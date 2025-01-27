@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home,name='home'),
     path('delete_recipie/<id>/',delete_recipie,name='delete_recipie'),
+    path('update_recipie/<id>/',update_recipie,name='update_recipie'),
+
 ]
 
 if settings.DEBUG:

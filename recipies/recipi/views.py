@@ -29,5 +29,29 @@ def delete_recipie(request, id):
         pass  # You might want to handle this case with an error message or logging
     return redirect('home')
 
+def update_recipie(request,id):
+    querryset  = form.objects.get(id=id)
+    if request.method=="POST":
+        data = request.POST
+        name = data.get('name')
+        description=data.get('description')
+        image=request.FILES.get('image')
+
+        querryset.name=name
+        querryset.description=description
+
+        if image:
+            querryset.image=image
+        querryset.save()
+
+        return redirect('home')
+
+    
+    context={'recipie':querryset}
+    return render(request,'updates.html',context)
+
+    
+
+
 
 
