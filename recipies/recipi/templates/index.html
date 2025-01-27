@@ -25,6 +25,7 @@
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       overflow: hidden;
       animation: fadeIn 0.7s ease-in-out;
+      margin-top: 10%;
     }
 
     /* Card Animation */
@@ -114,7 +115,21 @@
         </div>
       </div>
     </div>
-    <table class="table" style="margin-top: 10%;">
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <form name="search" class="d-flex search-bar">
+          <input 
+            type="text" 
+            name="search" 
+            class="form-control me-2" 
+            placeholder="Search for a recipe..." 
+            aria-label="Search"
+          >
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </div>
+    </div>
+    <table class="table" style="margin-top: 5%;">
       <thead>
         <tr>
           <th scope="col">Sno.</th>

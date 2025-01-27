@@ -2,9 +2,7 @@ from django.shortcuts import render
 from recipi.models import *
 from django.shortcuts import  redirect
 
-def home(request):
-    querryset = form.objects.all()
-    context = {'recipies': querryset}
+def home(request):   
     if request.method=="POST":
         data = request.POST
         name = data.get('name')
@@ -16,9 +14,10 @@ def home(request):
             description=description,
             image=image,
         )
-        querryset=form.objects.all()
-
-        context['recipies'] = querryset
+    querryset=form.objects.all()
+    if request.GET.get('search'):
+        querryset=querryset.filter(name__icontains = request.GET.get('search'))
+    context = {'recipies': querryset}
     return render(request,"index.html",context)
 
 def delete_recipie(request, id):
